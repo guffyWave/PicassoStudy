@@ -52,6 +52,18 @@ public class MainActivity extends AppCompatActivity {
                 .into(imageView);
     }
 
+    public void showFileTransform(View v) {
+        File path = Environment.getExternalStorageDirectory();
+        file = new File(path, "img.jpg");
+        picasso.setLoggingEnabled(true);
+        picasso.setIndicatorsEnabled(true);
+        picasso.load(file).transform(new BitmapTransform(100, 100))
+                .centerInside()
+                .into(imageView);
+    }
+
+    //
+
     public void removeImage(View v) {
         PicassoTools.clearCache(Picasso.with(MainActivity.this));
     }
